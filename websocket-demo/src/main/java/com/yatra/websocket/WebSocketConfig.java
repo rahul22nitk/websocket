@@ -28,7 +28,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
-		config.enableSimpleBroker("/topic");
+//		config.enableSimpleBroker("/topic");
+		config.enableStompBrokerRelay("/topic", "/queue").setRelayHost("192.168.171.73").setRelayPort(15887).setClientLogin("searchrmquser").setSystemLogin("searchrmquser").
+			setClientPasscode("searchrmquser@195").setSystemPasscode("searchrmquser@195").setSystemHeartbeatSendInterval(5000).setSystemHeartbeatReceiveInterval(5000);
 		config.setApplicationDestinationPrefixes("/app");
 	}
 	
